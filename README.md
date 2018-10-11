@@ -14,7 +14,7 @@ To be specific,
 
 ### Progress
 
-- _Alpha Demo_: post period, [some optimizations](github.com/CS2102-AY1819S1-Group10/alpha)
+- _Alpha Demo_: post period, [some optimizations](//github.com/CS2102-AY1819S1-Group10/alpha)
 - _Project Report_: 
 - _Application Code Archive_: 
 - _Final Presentation/Demo_: 
