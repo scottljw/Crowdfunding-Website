@@ -12,6 +12,9 @@
 	<div class="member-dashboard">
 		<?php
 			session_start();
+			if ($_COOKIE[userid] != NULL && $_SESSION[userid] == NULL) {
+				$_SESSION[userid] = $_COOKIE[userid];
+			}
 			if ($_SESSION[userid] == NULL) {
 				echo "You have not logged in yet";
 			}

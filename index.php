@@ -34,9 +34,8 @@
 				<input type="text" placeholder="Enter Username" name="uid" required>
 				<label for="pass"><b>Password</b></label>
 				<input type="password" placeholder="Enter Password" name="pass" required>
-				
 				<label>
-					<input type="checkbox" checked="checked" name="remember"> Remember me
+					<input type="checkbox" checked="checked" name="rmbr"> Remember me
 				</label>
 			</div>
 			<div class="clearfix">
@@ -52,6 +51,9 @@
 		date_default_timezone_set("Asia/Singapore");
 		$current_date = date("Y-m-d");
 		session_start();
+		if ($_COOKIE[userid] != NULL && $_SESSION[userid] == NULL) {
+			$_SESSION[userid] = $_COOKIE[userid];
+		}
 		if (isset($_POST[signup])) {
 			$result = pg_query($db, "INSERT INTO users VALUES ('$_POST[uname]', '$_POST[psw]', '$_POST[name]', '$_POST[email]', '$current_date')");
 			if (!$result) {
@@ -59,6 +61,12 @@
 			}
 			else {
 				$_SESSION[userid] = $_POST[uname];
+				if (isset($_POST[rmb])) {
+					setcookie(userid, $_SESSION[userid], time()+60*60*24*30);
+				}
+				else if ($_COOKIE[userid] != NULL) {
+					setcookie(userid, NULL, time()-60);
+				}
 				echo "<p>Sign up successful!</p>";
 			}
 		}
@@ -69,6 +77,12 @@
 			}
 			else {
 				$_SESSION[userid] = $user[user_id];
+				if (isset($_POST[rmbr])) {
+					setcookie(userid, $_SESSION[userid], time()+60*60*24*30);
+				}
+				else if ($_COOKIE[userid] != NULL) {
+					setcookie(userid, NULL, time()-60);
+				}
 				echo "<p>Sign in successful!</p>";
 			}
 		}
@@ -80,6 +94,9 @@
 					$_SESSION[userid] = NULL;
 					session_unset();
 					session_destroy();
+					if ($_COOKIE[userid] != NULL) {
+						setcookie(userid, NULL, time()-60);
+					}
 				}
 				if ($_SESSION[userid] == NULL) {
 					echo "You have not logged in yet";
