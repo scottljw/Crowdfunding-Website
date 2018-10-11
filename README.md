@@ -21,21 +21,21 @@ To be specific,
 
 ### Features
 
-[x] Sign in and Sign up
-[x] Browse
-[ ] Search
-[x] Publish projects
-[x] Fund Projects
-[ ] Manage users
-[ ] Manage projects
+- [x] Sign in and Sign up
+- [x] Browse
+- [ ] Search
+- [x] Publish projects
+- [x] Fund Projects
+- [ ] Manage users
+- [ ] Manage projects
 
 ### Implementations
 
-[ ] Assertion of your choice
-[ ] Advanced SQL queries such as aggregates, nested queries, views, non-standard integrity constraints, triggers, and stored procedures
-[ ] Login pop-ups
-[ ] Search display
-[ ] UI design
+- [ ] Assertion of your choice
+- [ ] Advanced SQL queries such as aggregates, nested queries, views, non-standard integrity constraints, triggers, and stored procedures
+- [ ] Login pop-ups
+- [ ] Search display
+- [ ] UI design
 
 ### Misc
 
