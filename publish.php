@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
 <head>
 	<title>Crowdfunding: Publishing Project</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />

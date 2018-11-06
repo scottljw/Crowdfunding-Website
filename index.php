@@ -7,6 +7,10 @@
 </head>
 <body>
 	<h1>Crowdfunding Website</h1>
+	<form action="profile.php" method="GET">
+		<button type="submit">View My Profile</button>
+	</form>
+	<br/>
 	<!-- Button to open the modal form -->
 	<button onclick="document.getElementById('signingup').style.display='block'">Sign up</button>
 	<!-- Button to open the modal form -->
