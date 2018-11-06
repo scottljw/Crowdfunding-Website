@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
 <head>
 	<title>Crowdfunding</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -6,9 +7,17 @@
 </head>
 <body>
 	<h1>Crowdfunding Website</h1>
-	<table>
-		<h3>Sign up</h3>
+	<!-- Button to open the modal form -->
+	<button onclick="document.getElementById('signingup').style.display='block'">Sign up</button>
+	<!-- Button to open the modal form -->
+	<button onclick="document.getElementById('signingin').style.display='block'">Sign in</button>
+	<!-- The Modal -->
+	<div id="signingup" class="modal">
+		<span onclick="document.getElementById('signingup').style.display='none'" class="close" title="Close Modal">
+			&times;
+		</span>
 		<form name="register" action="index.php" method="POST">
+			<h3>Sign up</h3>
 			<div class="container">
 				<label for="uname"><b>Username</b></label>
     			<input type="text" placeholder="Enter Username" name="uname" required>
@@ -27,8 +36,15 @@
 				<button type="submit" class="signupbtn" name="signup">Sign up</button>
 			</div>
 		</form>
-		<h3>Sign in</h3>
+		<br/>
+	</div>
+	<!-- The Modal -->
+	<div id="signingin" class="modal">
+		<span onclick="document.getElementById('signingin').style.display='none'" class="close" title="Close Modal">
+			&times;
+		</span>
 		<form name="login" action="index.php" method="POST">
+			<h3>Sign in</h3>
 			<div class="container">
 				<label for="uid"><b>Username</b></label>
 				<input type="text" placeholder="Enter Username" name="uid" required>
@@ -44,7 +60,7 @@
 			</div>
 		</form>
 		<br/>
-	</table>
+	</div>
 	<?php
 		// Connect to the database. Please change the password in the following line accordingly
 		$db = pg_connect("host=localhost port=5432 dbname=postgres user=postgres password=000000");
