@@ -26,14 +26,14 @@ To be specific,
 - [ ] Search
 - [x] Publish projects
 - [x] Fund Projects
-- [ ] Manage users
-- [ ] Manage projects
+- [x] Manage users
+- [x] Manage projects
 
 ### Implementations
 
 - [ ] Assertion of your choice
 - [ ] Advanced SQL queries such as aggregates, nested queries, views, non-standard integrity constraints, triggers, and stored procedures
-- [ ] Login pop-ups
+- [x] Login pop-ups
 - [ ] Search display
 - [ ] UI design
 
