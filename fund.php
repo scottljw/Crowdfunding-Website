@@ -55,6 +55,14 @@
 			<li>Amount already funded: $<?php echo $inf[current_amount]?></li>
 		</ul>
 	</table>
+	
+	<?php
+				$expire = date_create($inf[start_date]);
+				date_add($expire, date_interval_create_from_date_string($inf[duration] . "days"));
+				$expire_date = date_format($expire, "Y-m-d");				
+				if ($expire_date > $current_time) {
+					
+	?>
 	<form name="display" action="fund.php" method="POST">
 		<ul>
 			<div class="container">
@@ -69,6 +77,8 @@
 	</form>
 	<br/>
 	<?php
+				}
+				else echo "The period of funding for this project ended on " . $expire_date;
 			}
 		}
 		if (isset($_POST[fund])) {

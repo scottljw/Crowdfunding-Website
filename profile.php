@@ -56,11 +56,11 @@
 				<h3>Modify Personal Information</h3>
 				<div class="container">
 	    			<label for="psw"><b>Password</b></label>
-	    			<input type="password" placeholder="Enter Password" name="psw" required>
+	    			<input type="password" placeholder="Enter Password" name="psw" value="<?php echo $profile[password];?>" required>
 	    			<label for="name"><b>Full Name</b></label>
-	    			<input type="text" placeholder="Enter Full Name" name="name" required>
+	    			<input type="text" placeholder="Enter Full Name" name="name" value="<?php echo $profile[name];?>" required>
 					<label for="email"><b>Email</b></label>
-					<input type="text" placeholder="Enter Email" name="email" required>
+					<input type="text" placeholder="Enter Email" name="email" value="<?php echo $profile[email];?>" required>
 				</div>
 				<div class="clearfix">
 					<button type="button" class="cancelbtn">Cancel</button>
@@ -104,7 +104,7 @@
 	</table>
 	<br/>
 	<?php
-			echo "You have donated a total amount of $" . $personal_sum;
+			echo $personal_sum ? "You have donated a total amount of $" . $personal_sum : "You have not made any donation";
 		}
 		if (isset($_POST[mod])) {
 			$res = pg_query($db, "UPDATE users SET password = '$_POST[psw]', name = '$_POST[name]', email = '$_POST[email]' WHERE user_id = '$_SESSION[userid]'");
