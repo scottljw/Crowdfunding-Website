@@ -140,6 +140,9 @@
 		<form action="browse.php" method="GET">
 			<button type="submit">Browse Project</button>
 		</form>
+		<form action="search.php" method="GET">
+			<button type="submit">Search Project</button>
+		</form>
 		<form action="publish.php" method="GET">
 			<button type="submit">Publish Project</button>
 		</form>
