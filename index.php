@@ -110,7 +110,7 @@
 	<form action="index.php" method="POST">
 		<div class="member-dashboard">
 			<?php
-				if(isset($_POST[logout])) {
+				if (isset($_POST[logout])) {
 					$_SESSION[userid] = NULL;
 					session_unset();
 					session_destroy();
@@ -122,14 +122,19 @@
 					echo "You have not logged in yet";
 				}
 				else {
-					echo "You have logged in as ";
-					echo $_SESSION[userid];
+					echo "You have logged in as <i>" . $_SESSION[userid] . "</i>";
 				}
 			?>
 			<button type="submit" name="logout" class="logoutbtn">Log out</button>
 		</div>
 	</form>
 	<br/>
+	<?php
+		$admintest = pg_fetch_result(pg_query($db, "SELECT role FROM users WHERE user_id = '$_SESSION[userid]'"), 0, 0);
+		if ($admintest == 1) {
+			echo "You are logged in as an ADMINISTRATOR. If you know what you are doing, click <a href=admin.php>here<a> to go to the management page.<br/>";
+		}
+	?>
 	<table>
 		<h2>About the Projects</h2>
 		<form action="browse.php" method="GET">

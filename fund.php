@@ -20,11 +20,11 @@
 				echo "You have not logged in yet";
 			}
 			else {
-				echo "You have logged in as ";
-				echo $_SESSION[userid];
+				echo "You have logged in as <i>" . $_SESSION[userid] . "</i>";
 			}
 		?>
 	</div>
+	<br/>
 	<?php
 		// Connect to the database. Please change the password in the following line accordingly
 		$db = pg_connect("host=localhost port=5432 dbname=postgres user=postgres password=000000");
@@ -33,9 +33,17 @@
 		if ($_POST[project] != NULL) {
 			$_SESSION[project] = $_POST[project];
 		}
-		$inf = pg_fetch_assoc(pg_query($db, "SELECT * FROM publish_projects WHERE project_id = '$_SESSION[project]'"));
+		if ($_SESSION[userid] == NULL) {
+			echo "Please login to fund the project.";
+		}
+		else {
+			$inf = pg_fetch_assoc(pg_query($db, "SELECT * FROM publish_projects WHERE project_id = '$_SESSION[project]'"));
+			if ($inf[project_id] == NULL) {
+				echo "Proejct does not exist! Please return to homepage.";
+			}
+			else {
 	?>
-	<p>
+	<table>
 		<ul>
 			<li>Project ID: #<?php echo $inf[project_id]?></li>
 			<li>Title: <?php echo $inf[title]?></li>
@@ -46,7 +54,7 @@
 			<li>amount seeked to fund: $<?php echo $inf[total_amount]?></li>
 			<li>Amount already funded: $<?php echo $inf[current_amount]?></li>
 		</ul>
-	</p>
+	</table>
 	<form name="display" action="fund.php" method="POST">
 		<ul>
 			<div class="container">
@@ -61,6 +69,8 @@
 	</form>
 	<br/>
 	<?php
+			}
+		}
 		if (isset($_POST[fund])) {
 			$result = pg_query($db, "INSERT INTO fund VALUES ('$_SESSION[userid]', '$inf[project_id]', '$current_time', '$_POST[am]')");
 			if (!$result) {

@@ -20,11 +20,11 @@
 				echo "You have not logged in yet";
 			}
 			else {
-				echo "You have logged in as ";
-				echo $_SESSION[userid];
+				echo "You have logged in as <i>" . $_SESSION[userid] . "</i>";
 			}
 		?>
 	</div>
+	<br/>
 	<?php
 		// Connect to the database. Please change the password in the following line accordingly
 		$db = pg_connect("host=localhost port=5432 dbname=postgres user=postgres password=000000");
